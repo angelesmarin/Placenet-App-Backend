@@ -41,7 +41,9 @@ Done by
 
 
 ## 2. Make Basic API structure (Express.js)
-**Routes**: what happens when a url is accessed 
+**Routes**: pathways
+- manage how differeng requests are handled; directs them to the right controller.
+- entry point for CRUD operations 
 
 
 
