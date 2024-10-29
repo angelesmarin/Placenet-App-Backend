@@ -28,10 +28,14 @@ This is the backend for our Placenet react native mobile application. We chose t
   * https://insomnia.rest/download 
   
 ## 1. Make a RESTFUL API (Node.js; Express.js)
-* we first set up our express server: index.js 
+We first initialized our project and set up our server using Express.js.
 
-## 2. Make API 
-* Express.js 
+## 2. Make Basic API structure 
+Our App's basic structure is as follows, with the following components for Routes, Controllers, and Models:
+* user authentication
+* property management
+* projct management
+* document management 
 
 ## 3. Make PostgreSQL Database 
 * PostgreSQL
