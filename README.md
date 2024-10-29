@@ -34,7 +34,7 @@ We first initialized our project and set up our server using Express.js.
 
 
 **RESTful API**: will let app fetch, send, update, delete data by making HTTP requests to server. 
-–
+
 Done by 
 - intializing express.js project
 - creating entry point: app.js 
