@@ -1,4 +1,4 @@
-# Info on files:
+# Info on our files:
 
 ## app.js
 - Main entry point to server; contains server code 
@@ -6,3 +6,8 @@
 - Will define how request and responses are handled 
 
 
+## Routes folder
+
+## Controller folder
+
+## Models folder 
