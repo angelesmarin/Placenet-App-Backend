@@ -43,7 +43,7 @@ This is the backend for our Placenet react native mobile application. We chose t
 ## 5. Implement CRUD in API  
 
 ## 6. Test API endpoints 
-* Postman 
+* Insomnia 
 
 ## 7. Connect frontend (https://github.com/angelesmarin/Placenet-App-Frontend) to baackend ()
 * React Native 
