@@ -27,9 +27,8 @@ This is the backend for our Placenet react native mobile application. We chose t
   * api client
   * https://insomnia.rest/download 
   
-## 1. Make a RESTFUL API 
-* Node.js
-* Express.js 
+## 1. Make a RESTFUL API (Node.js; Express.js)
+* we first set up our express server: index.js 
 
 ## 2. Make API 
 * Express.js 
