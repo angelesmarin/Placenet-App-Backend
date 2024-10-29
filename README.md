@@ -1,7 +1,8 @@
 # Placenet Backend 
 This is the backend for our Placenet react native mobile application. We chose to create different repositories for modularity. These are the steps we took to set up the backend for our app:
 
-### Here is information about our file structure: https://github.com/angelesmarin/Placenet-App-Backend/blob/development/documentation/file_structure.md 
+
+Here is information about our file structure: https://github.com/angelesmarin/Placenet-App-Backend/blob/development/documentation/file_structure.md 
 
 ## Prerequisite Installs:
 * Javascript
