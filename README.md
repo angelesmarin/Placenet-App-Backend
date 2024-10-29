@@ -30,6 +30,14 @@ This is the backend for our Placenet react native mobile application. We chose t
 ## 1. Make a RESTFUL API (Node.js; Express.js)
 We first initialized our project and set up our server using Express.js.
 
+**API**: set of rules to allow communication between back & front end; lets front end request, send, and receive data to & from the server. 
+**RESTful API**: will let app fetch, send, update, delete data by making HTTP requests to server. 
+–
+Done by 
+- intializing express.js project
+- creating entry point: app.js 
+
+
 ## 2. Make Basic API structure 
 Our App's basic structure is as follows, with the following components for Routes, Controllers, and Models:
 * user authentication
