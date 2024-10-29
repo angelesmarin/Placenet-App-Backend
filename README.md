@@ -45,6 +45,7 @@ Done by
 - manage how differeng requests are handled; directs them to the right controller.
 - entry point for CRUD operations 
 
+**Controllers**
 
 
 Our App's basic structure is as follows, with the following components for Routes, Controllers, and Models:
