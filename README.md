@@ -31,6 +31,8 @@ This is the backend for our Placenet react native mobile application. We chose t
 We first initialized our project and set up our server using Express.js.
 
 **API**: set of rules to allow communication between back & front end; lets front end request, send, and receive data to & from the server. 
+
+
 **RESTful API**: will let app fetch, send, update, delete data by making HTTP requests to server. 
 –
 Done by 
