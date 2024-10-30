@@ -116,10 +116,4 @@ Used Insomnia to test each API endpoint, including CRUD operations for all our r
   - GET /api/documents
   - POST /api/documents (file upload)
 
-- Authentication (If Implemented)
-  - POST /api/auth/login
-  - POST /api/auth/register
-  - GET /api/auth/me
-  - POST /api/auth/logout
-
 ## 7. Connect frontend to baackend 
