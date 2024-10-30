@@ -1,2 +1,2 @@
 # DOCUMENTATION 
-This folder contains information relevant to our process, including background information and such. 
+This folder contains information about our the files in our backend
