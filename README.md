@@ -45,9 +45,9 @@ We set up a basic API structure to handle data requests, edits, file uploads, an
 
 Here is the overall structure and folders we implemented:
 * Routes
-* to help direct requests to the right logic/ controller
+	* to help direct requests to the right logic/ controller
 * Controllers
-* The logic that processes the requests + interacts with database 
+	* The logic that processes the requests + interacts with database 
 * Models 
 	* Define the structure of the database + interacts with database 
 
