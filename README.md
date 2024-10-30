@@ -32,7 +32,8 @@ This is the backend for our Placenet react native mobile application so that our
  
 Future iterations:
 * Cors
-	* specify which origins can access backend server    
+	* specify which origins can access backend server
+ 	* https://www.npmjs.com/package/cors    
   
 ## 1. Make a RESTFUL API (Node.js; Express.js)
 We first initialized our project and set up our server using Express.js.
