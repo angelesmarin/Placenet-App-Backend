@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
   getAllProjects,
-  getProjectById,
+  getProject,
   createProject,
   updateProject,
   deleteProject
@@ -12,7 +12,7 @@ router.post('/', createProject);
 
 router.get('/', getAllProjects);
 
-router.get('/:projectId', getProjectById);
+router.get('/:projectId', getProject);
 
 router.put('/:projectId', updateProject);
 
