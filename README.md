@@ -11,15 +11,15 @@ This is the backend for our Placenet react native mobile application so that our
 * Node.js
   * runtime environment 
   * https://nodejs.org/en/download/package-manager
-* Nodedemon
-  * tool to auto restart node.js app when updated.
-  * https://www.npmjs.com/package/nodemon
 * Express.js
   * framework
   * https://expressjs.com/en/starter/installing.html
 * PostgreSQL
   * nosql database
   * https://www.postgresql.org/download/
+* Mutler
+  * hamdle file uploads
+  * https://www.npmjs.com/package/multer
 * Axios lib
   * for testing
   * https://www.npmjs.com/package/axios 
