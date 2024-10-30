@@ -61,6 +61,12 @@ We implemented routes, controllers, and models for:
 * document management 
 
 ## 3. Make PostgreSQL Database (PostgreSQL)
+We created a database and tables for:
+* user authentication
+* property management
+* projct management
+* document management 
+We then used Sequalize to manage these in our app. 
   
 ## 4. Connect runtime to database (pg library)
 
