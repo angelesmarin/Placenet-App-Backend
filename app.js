@@ -1,14 +1,17 @@
 /*
-this is the server to connect to postgresql database 
+configuring expess app 
 */
 
 //initialize 
 const express = require(`express`);
-const { Pool } = require('pg'); //pool class will manage db connctions 
+const cors = require('cors');
 require('dotenv').config(); 
 
+//sequelize 
+const sequelize = require('./database'); //instance of database connection 
+const {User, Property,} = require('./models');
+
 const app = express() //init exppress app 
-const port = process.env.PORT || 3000; //use port 3000
 
 //import routes 
 const userRoutes = require('./routes/userRoutes');
