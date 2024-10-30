@@ -41,14 +41,17 @@ Done by
 
 
 ## 2. Make Basic API structure (Express.js)
-**Routes**: pathways
-- manage how differeng requests are handled; directs them to the right controller.
-- entry point for CRUD operations 
+We set up a basic API structure to handle data requests, edits, file uploads, and overall communication between front and back end 
 
-**Controllers**
+Here is the overall structure and folders we implemented:
+* Routes
+* to help direct requests to the right logic/ controller
+* Controllers
+* The logic that processes the requests + interacts with database 
+* Models 
+	* Define the structure of the database + interacts with database 
 
-
-Our App's basic structure is as follows, with the following components for Routes, Controllers, and Models:
+We implemented routes, controllers, and models for: 
 * user authentication
 * property management
 * projct management
