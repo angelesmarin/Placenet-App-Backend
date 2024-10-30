@@ -27,7 +27,7 @@ This is the backend for our Placenet react native mobile application so that our
   * Node library for database 
   * https://www.npmjs.com/package/pg 
 * Insomnia
-  * api client
+  * to test api endpoints 
   * https://insomnia.rest/download
  
 Future iterations:
@@ -53,11 +53,11 @@ We set up a basic API structure to handle data requests, edits, file uploads, an
 
 Here is the overall structure and folders we implemented:
 * Routes
-	* to help direct requests to the right logic/ controller
+	* add initial folder that will direct requests to the right logic/ controller
 * Controllers
-	* the logic that processes the requests + interacts with database 
+	* add initial folder that will contain the logic that processes the requests + interacts with database 
 * Models 
-	* define the structure of the database + interacts with database 
+	* add initial folder that will contain the structure of the database
 
 We implemented routes, controllers, and models for: 
 * user authentication
@@ -73,10 +73,23 @@ We created a database and tables for:
 * document management 
 We then used Sequalize to manage these in our app. 
   
-## 4. Connect runtime to database (pg library)
+## 4. Set up Sequelize 
+We made Sequelize models in the Models folder to match the tables we made in our database & synchronozed the models with our database. 
 
-## 5. Implement CRUD in API  
+## 5. Define Controllers
+We created controllers to handle and manage CRUD operations for our resources:
+* users
+* properties
+* project
+* documents
+
+## 6. Handle File Uploads (Mutler)
+Set up Mutler to save user uploaded PDF files in local folder. 
+
+## 7. Set up API Routes 
+In our Routes folder, we made files for our recourses and defined the CRUD operation routes for each resource, and registered these routes in our server.js file. 
 
 ## 6. Test API endpoints (Insomnia)
+Used Insomnia to test each API endpoint, including CRUD operations for all our resources and verified that files were uploaded correctly. 
 
-## 7. Connect frontend (https://github.com/angelesmarin/Placenet-App-Frontend) to baackend (React Native)
+## 7. Connect frontend to baackend 
