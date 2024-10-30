@@ -24,7 +24,7 @@ This is the backend for our Placenet react native mobile application so that our
   * for testing
   * https://www.npmjs.com/package/axios 
 * pg
-  * Express library
+  * Node library for database 
   * https://www.npmjs.com/package/pg 
 * Insomnia
   * api client
