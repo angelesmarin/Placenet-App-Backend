@@ -47,9 +47,9 @@ Here is the overall structure and folders we implemented:
 * Routes
 	* to help direct requests to the right logic/ controller
 * Controllers
-	* The logic that processes the requests + interacts with database 
+	* the logic that processes the requests + interacts with database 
 * Models 
-	* Define the structure of the database + interacts with database 
+	* define the structure of the database + interacts with database 
 
 We implemented routes, controllers, and models for: 
 * user authentication
