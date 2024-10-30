@@ -4,4 +4,4 @@
 * once models are defined, they are used to perform CRUD opererations. 
 
 
-We already make tables in our database, so the oal was to create models to match the structure in the table, **syncing** these sequelize models with our existing tables 
+We already make tables in our database, so the goal was to create models to match the structure in the table, **syncing** these sequelize models with our existing tables 
