@@ -10,7 +10,10 @@ This is the backend for our Placenet react native mobile application so that our
   * https://nodejs.org/en 
 * Node.js
   * runtime environment 
-  * https://nodejs.org/en/download/package-manager 
+  * https://nodejs.org/en/download/package-manager
+* Nodedemon
+  * tool to auto restart node.js app when updated.
+  * https://www.npmjs.com/package/nodemon
 * Express.js
   * framework
   * https://expressjs.com/en/starter/installing.html
