@@ -90,6 +90,36 @@ Set up Mutler to save user uploaded PDF files in local folder.
 In our Routes folder, we made files for our recourses and defined the CRUD operation routes for each resource, and registered these routes in our server.js file. 
 
 ## 6. Test API endpoints (Insomnia)
-Used Insomnia to test each API endpoint, including CRUD operations for all our resources and verified that files were uploaded correctly. 
+Used Insomnia to test each API endpoint, including CRUD operations for all our resources and verified that files were uploaded correctly:
+- Users
+  - GET /api/users
+  - GET /api/users/:userId
+  - POST /api/users
+  - PUT /api/users/:userId
+  - DELETE /api/users/:userId
+
+- Properties
+  - GET /api/properties
+  - GET /api/properties/:propertyId
+  - POST /api/properties
+  - PUT /api/properties/:propertyId
+  - DELETE /api/properties/:propertyId
+
+- Projects
+  - GET /api/projects
+  - GET /api/projects/:projectId
+  - POST /api/projects
+  - PUT /api/projects/:projectId
+  - DELETE /api/projects/:projectId
+
+- Documents
+  - GET /api/documents
+  - POST /api/documents (file upload)
+
+- Authentication (If Implemented)
+  - POST /api/auth/login
+  - POST /api/auth/register
+  - GET /api/auth/me
+  - POST /api/auth/logout
 
 ## 7. Connect frontend to baackend 
