@@ -11,6 +11,7 @@ const {
 /*
 CRUD operations 
 */
+router.post('/authenticate', authenticateUser);
 
 router.post('/', createUser); //create 
 

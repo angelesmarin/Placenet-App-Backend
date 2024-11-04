@@ -1,6 +1,19 @@
 const User = require('../models/User');
 
-// get users
+//authenticate 
+const authenticateUser = async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ where: { username } });
+    if (!user || user.password_hash !== hashFunction(password)) {
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+    res.status(200).json({ userId: user.user_id });
+  } catch (error) {
+    res.status(500).json({ message: 'Authentication failed', error });
+  }
+};
+
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll();
@@ -10,7 +23,6 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// get user 
 const getUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.userId);
@@ -69,4 +81,5 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  authenticateUser,
 };
