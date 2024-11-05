@@ -4,15 +4,25 @@ const User = require('../models/User');
 const authenticateUser = async (req, res) => {
   const { username, password } = req.body;
   try {
+    console.log('Received login attempt:', username, password); // Check received values
     const user = await User.findOne({ where: { username } });
-    if (!user || user.password_hash !== hashFunction(password)) {
+    if (!user) {
+      console.log('User not found');
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
+    console.log('User found:', user.username);
+    console.log('Checking password:', user.password_hash, password);
+    if (user.password_hash !== password) {
+      console.log('Password mismatch');
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     res.status(200).json({ userId: user.user_id });
   } catch (error) {
+    console.error('Authentication error:', error);
     res.status(500).json({ message: 'Authentication failed', error });
   }
 };
+
 
 const getAllUsers = async (req, res) => {
   try {

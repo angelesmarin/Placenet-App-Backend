@@ -1,9 +1,13 @@
+const { where } = require('sequelize');
 const Property = require('../models/Property');
 
 // get properties
 const getAllProperties = async (req, res) => {
+  const { user_id } = req.query;
   try {
-    const properties = await Property.findAll();
+    const properties = await Property.findAll({
+      where: { user_id },
+    });
     res.status(200).json(properties);
   } catch (error) {
     res.status(500).json({ message: 'Error getting properties', error });
@@ -37,13 +41,14 @@ const createProperty = async (req, res) => {
 // update property 
 const updateProperty = async (req, res) => {
   try {
-    const { user_id, name } = req.body;
+    const { user_id, name } = req.body; 
     const property = await Property.findByPk(req.params.propertyId);
     if (!property) {
       return res.status(404).json({ message: 'Property not found' });
     }
+    // Update both `user_id` and `name` if needed
     await property.update({ user_id, name });
-    res.status(200).json(property);
+    res.status(200).json({ message: 'Property updated successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Error updating property', error });
   }
