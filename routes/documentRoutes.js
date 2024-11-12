@@ -8,8 +8,8 @@ add new documents
 get documents 
 */
 
-router.get('/', getAllDocuments);
+router.get('/', getAllDocuments); //get
 
-router.post('/', upload.single('file'), addDocument);
+router.post('/', upload.single('file'), addDocument); //add
 
 module.exports = router;

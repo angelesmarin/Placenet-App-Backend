@@ -11,21 +11,19 @@ const Project = sequelize.define('Project', {
   },
   property_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: Property,
       key: 'property_id',
     },
-    onDelete: 'CASCADE',
   },
   user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: true,
     references: {
       model: User,
       key: 'user_id',
     },
-    onDelete: 'CASCADE',
   },
   name: {
     type: DataTypes.STRING(255),
@@ -39,7 +37,7 @@ const Project = sequelize.define('Project', {
   },
   created_at: {
     type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
   },
 }, {
   tableName: 'projects',

@@ -7,17 +7,17 @@ const multer = require('multer');
 //storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'uploads/');  // where pdfs will be uploaded to 
+    cb(null, 'uploads/');  //pdf uploaded locally 
   },
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, `${uniqueSuffix}-${file.originalname}`);  // Set the file name
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random());
+    cb(null, `${uniqueSuffix}-${file.originalname}`);  //file name 
   },
 });
 
-// allow only PDFs
+//only PDFs
 const fileFilter = (req, file, cb) => {
-  // check for PDF
+  //check for PDF
   if (file.mimetype === 'application/pdf') {
     cb(null, true);  // Accept the file
   } else {

@@ -30,7 +30,7 @@ sequelize.authenticate()
   .catch(err => console.log('Error: ' + err));
 
 // sync models 
-sequelize.sync({ alter: false })  // dont want to change existing db tables
+sequelize.sync({ alter: true })  // dont want to change existing db tables
   .then(() => console.log('Models synced with database.'))
   .catch(err => console.log('Error syncing models: ' + err));
 
