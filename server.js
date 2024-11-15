@@ -11,14 +11,14 @@ const userRoutes = require('./routes/userRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const documentRoutes = require('./routes/documentRoutes');
-const getProfileSummary = require('./routes/summaryRoutes');
+const summaryRoutes = require('./routes/summaryRoutes');
 
 // register routes 
 server.use('/api/users', userRoutes);
 server.use('/api/properties', propertyRoutes);
 server.use('/api/projects', projectRoutes);
 server.use('/api/documents', documentRoutes);
-server.use('api/users', getProfileSummary);///users/:userId/summary
+server.use('/api/users', summaryRoutes);
 
 // db connection
 sequelize.authenticate()

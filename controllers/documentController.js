@@ -2,7 +2,7 @@
 will handle the uploaded pdf files + save info to database 
 */
 
-const Document = require('../models/Document');
+const { Document } = require('../models');
 const path = require('path');
 
 //new upload

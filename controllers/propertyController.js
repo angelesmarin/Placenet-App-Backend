@@ -1,5 +1,6 @@
 const { where } = require('sequelize');
-const Property = require('../models/Property');
+const { Property } = require('../models');
+
 
 //get all
 const getAllProperties = async (req, res) => {

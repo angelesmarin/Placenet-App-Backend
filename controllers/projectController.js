@@ -1,14 +1,25 @@
-const Project = require('../models/Project');
+const { Property, Project } = require('../models');
 
-// get projects
+
+
+//get projects
 const getAllProjects = async (req, res) => {
   try {
-    const projects = await Project.findAll();
+    const { user_id, property_id } = req.query;
+    const queryOptions = {};
+    if (user_id) {
+      queryOptions.where = { ...queryOptions.where, user_id }; 
+    }
+    if (property_id) {
+      queryOptions.where = { ...queryOptions.where, property_id };
+    }
+    const projects = await Project.findAll(queryOptions);
     res.status(200).json(projects);
   } catch (error) {
     res.status(500).json({ message: 'Error getting projects', error });
   }
 };
+
 
 // get a project
 const getProject = async (req, res) => {
