@@ -8,18 +8,10 @@ const {
   deleteProperty
 } = require('../controllers/propertyController');
 
-/*
-CRUD operations 
-*/
-
-router.post('/', createProperty); // create 
-
+router.post('/', createProperty); 
 router.get('/:propertyId', getProperty); //read: 1 
-
 router.get('/', getAllProperties); //read: all 
-
-router.put('/:propertyId', updateProperty); //update 
-
-router.delete('/:propertyId', deleteProperty); //delete 
+router.put('/:propertyId', updateProperty);  
+router.delete('/:propertyId', deleteProperty);  
 
 module.exports = router;
