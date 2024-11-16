@@ -1,4 +1,6 @@
 const { User } = require('../models');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 //authenticate 
 const authenticateUser = async (req, res) => {
@@ -12,11 +14,18 @@ const authenticateUser = async (req, res) => {
     }
     console.log('User found:', user.username);
     console.log('Checking password:', user.password_hash, password);
-    if (user.password_hash !== password) {
+
+    //compare hash pw
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+    if (isMatch) {
       console.log('Password mismatch');
       return res.status(401).json({ message: 'Invalid credentials' });
     }
-    res.status(200).json({ userId: user.user_id });
+    //res.status(200).json({ userId: user.user_id });
+
+    //NEW: generate jwt
+    const token = jwt.sign({ userId: user.user_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(200).json({ token });
   } catch (error) {
     console.error('Authentication error:', error);
     res.status(500).json({ message: 'Authentication failed', error });
