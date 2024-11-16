@@ -1,7 +1,8 @@
 const { where } = require('sequelize');
-const Property = require('../models/Property');
+const { Property } = require('../models');
 
-// get properties
+
+//get all
 const getAllProperties = async (req, res) => {
   const { user_id } = req.query;
   try {
@@ -14,7 +15,7 @@ const getAllProperties = async (req, res) => {
   }
 };
 
-// get a property with ID
+//get a property with ID
 const getProperty = async (req, res) => {
   try {
     const property = await Property.findByPk(req.params.propertyId);
@@ -38,7 +39,7 @@ const createProperty = async (req, res) => {
   }
 };
 
-// update property 
+//update 
 const updateProperty = async (req, res) => {
   try {
     const { user_id, name } = req.body; 
@@ -54,7 +55,7 @@ const updateProperty = async (req, res) => {
   }
 };
 
-// Delete property
+//d
 const deleteProperty = async (req, res) => {
   try {
     const property = await Property.findByPk(req.params.propertyId);

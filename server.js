@@ -1,15 +1,9 @@
-/*
-expess server configuration: has all middleware, routes, and database connection 
-exports the configured server to start_server.js
-*/
-
+//has exports to start_server.js
 const express = require('express');
-const sequelize = require('./database');  // make instance of sequelize 
-require('dotenv').config();  // load my db info
+const sequelize = require('./database'); 
+require('dotenv').config();  
 
-// initialize  server
 const server = express();
-
 server.use(express.json());
 
 // import routes 
@@ -17,12 +11,14 @@ const userRoutes = require('./routes/userRoutes');
 const propertyRoutes = require('./routes/propertyRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const documentRoutes = require('./routes/documentRoutes');
+const summaryRoutes = require('./routes/summaryRoutes');
 
 // register routes 
 server.use('/api/users', userRoutes);
 server.use('/api/properties', propertyRoutes);
 server.use('/api/projects', projectRoutes);
 server.use('/api/documents', documentRoutes);
+server.use('/api/users', summaryRoutes);
 
 // db connection
 sequelize.authenticate()

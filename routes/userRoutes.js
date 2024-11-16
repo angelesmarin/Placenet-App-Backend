@@ -9,19 +9,11 @@ const {
   authenticateUser
 } = require('../controllers/userController');
 
-/*
-CRUD operations 
-*/
 router.post('/authenticate', authenticateUser);
-
-router.post('/', createUser); //create 
-
+router.post('/', createUser); 
 router.get('/', getAllUsers); //read: all
-
 router.get('/:userId', getUser); //read: 1
-
-router.put('/:userId', updateUser); // update 
-
-router.delete('/:userId', deleteUser); //delete 
+router.put('/:userId', updateUser); 
+router.delete('/:userId', deleteUser); 
 
 module.exports = router;
