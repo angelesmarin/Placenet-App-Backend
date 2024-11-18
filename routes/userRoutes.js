@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authenticateToken = require('../middleware/authMiddleware');
 const {
   getAllUsers,
   getUser,
@@ -7,8 +8,10 @@ const {
   deleteUser,
 } = require('../controllers/userController');
 
-router.get('/', getAllUsers); //read: all
-router.get('/:userId', getUser); //read: 1
+//router.use(authenticateToken);//protect route 
+
+router.get('/', getAllUsers); 
+router.get('/:userId', getUser);
 router.put('/:userId', updateUser); 
 router.delete('/:userId', deleteUser); 
 

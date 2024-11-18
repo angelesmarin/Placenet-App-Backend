@@ -13,6 +13,7 @@ const projectRoutes = require('./routes/projectRoutes');
 const documentRoutes = require('./routes/documentRoutes');
 const summaryRoutes = require('./routes/summaryRoutes');//new route
 const authRoutes = require('./routes/authRoutes'); //new route 
+const { getProfileSummary } = require('./controllers/summaryController');
 
 // register routes 
 server.use('/api/users', userRoutes);
@@ -21,6 +22,7 @@ server.use('/api/projects', projectRoutes);
 server.use('/api/documents', documentRoutes);
 server.use('/api/users', summaryRoutes);//new route 
 server.use('/api/auth', authRoutes);//new route
+server.use('/api/summary', summaryRoutes);
 
 // db connection
 sequelize.authenticate()
