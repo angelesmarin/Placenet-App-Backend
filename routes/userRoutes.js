@@ -8,7 +8,7 @@ const {
   deleteUser,
 } = require('../controllers/userController');
 
-//router.use(authenticateToken);//protect route 
+router.use(authenticateToken);
 
 router.get('/', getAllUsers); 
 router.get('/:userId', getUser);
