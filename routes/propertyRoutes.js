@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const authenticateToken = require('../middleware/authMiddleware');//protect with jwt
+
 const {
   getAllProperties,
   getProperty,
@@ -8,18 +10,12 @@ const {
   deleteProperty
 } = require('../controllers/propertyController');
 
-/*
-CRUD operations 
-*/
+router.use(authenticateToken);//protect routes
 
-router.post('/', createProperty); // create 
-
-router.get('/:propertyId', getProperty); //read: 1 
-
-router.get('/', getAllProperties); //read: all 
-
-router.put('/:propertyId', updateProperty); //update 
-
-router.delete('/:propertyId', deleteProperty); //delete 
+router.post('/', createProperty); 
+router.get('/:propertyId', getProperty); 
+router.get('/', getAllProperties);
+router.put('/:propertyId', updateProperty);  
+router.delete('/:propertyId', deleteProperty);  
 
 module.exports = router;

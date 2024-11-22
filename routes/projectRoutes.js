@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const authenticateToken = require('../middleware/authMiddleware');//protect with jwt
 const {
   getAllProjects,
   getProject,
@@ -7,6 +8,8 @@ const {
   updateProject,
   deleteProject
 } = require('../controllers/projectController');
+
+router.use(authenticateToken);//protect route
 
 router.post('/', createProject);
 

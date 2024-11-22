@@ -32,7 +32,7 @@ const Project = sequelize.define('Project', {
   description: {
     type: DataTypes.TEXT,
   },
-  start_date: {
+  completion_date: {
     type: DataTypes.DATE,
   },
   created_at: {
