@@ -1,5 +1,6 @@
 const { Document, Project, Property } = require('../models');
 const path = require('path');
+const fs = require('fs');
 /*
 will handle the uploaded pdf files + save info to database 
 */
@@ -67,7 +68,50 @@ const getAllDocuments = async (req, res) => {
   }
 };
 
+const deleteDocument = async (req, res) => {
+  try {
+    const user_id = req.user.userId; //get id from payload 
+    const { document_id } = req.params; //get doc id from parameters 
+
+    //find in db
+    const document = await Document.findOne({
+      where: { document_id, user_id },
+      include: {
+        model: Project,
+        include: {
+          model: Property,
+          where: { user_id },
+        },
+      },
+    });
+
+    //check auth 
+    if (!document) {
+      return res.status(404).json({ message: 'Document not found or not authorized to delete' });
+    }
+
+    //delete from file system 
+    const filePath = path.resolve(document.file_path);
+    fs.unlink(filePath, async (err) => {
+      if (err) {
+        console.error('Error deleting file:', err);
+        return res.status(500).json({ message: 'Error deleting file from server' });
+      }
+
+      //remove pdf from db
+      await Document.destroy({ where: { document_id } });
+
+      res.status(200).json({ message: 'Document deleted successfully' });
+    });
+  } catch (error) {
+    console.error('Error deleting document:', error);
+    res.status(500).json({ message: 'Error deleting document', error: error.message });
+  }
+};
+
+
 module.exports = {
   addDocument,
   getAllDocuments,
+  deleteDocument,
 };

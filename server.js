@@ -13,16 +13,22 @@ const projectRoutes = require('./routes/projectRoutes');
 const documentRoutes = require('./routes/documentRoutes');
 const summaryRoutes = require('./routes/summaryRoutes');//new route
 const authRoutes = require('./routes/authRoutes'); //new route 
-const { getProfileSummary } = require('./controllers/summaryController');
 
 // register routes 
 server.use('/api/users', userRoutes);
 server.use('/api/properties', propertyRoutes);
 server.use('/api/projects', projectRoutes);
 server.use('/api/documents', documentRoutes);
-server.use('/api/users', summaryRoutes);//new route 
+server.use('/api/users', summaryRoutes);
 server.use('/api/auth', authRoutes);//new route
-server.use('/api/summary', summaryRoutes);
+server.use('/api/summary', summaryRoutes);//new route 
+
+//test 
+server.get('/api/test', (req, res) => {
+  res.send({ message: 'API is working!' });
+});
+
+
 
 // db connection
 sequelize.authenticate()

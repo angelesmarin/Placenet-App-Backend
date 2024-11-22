@@ -6,7 +6,7 @@ const cors = require('cors');
 const express = require('express');
 
 app.use(cors({
-  origin: ['http://10.190.191.40:8081', 'http://localhost:8081'], //mobile and web
+  origin: ['http://10.190.191.61:8081'], //expo ip and port 
 }));
 app.use(express.json()); 
 

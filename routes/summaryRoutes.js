@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { getProfileSummary } = require('../controllers/summaryController');
+const { getPropertySummary } = require('../controllers/summaryController');
 const authenticateToken = require('../middleware/authMiddleware');
 
 router.use(authenticateToken);//protect route
-router.get('/', getProfileSummary); 
+router.get('/', getPropertySummary); 
 
 module.exports = router;
 
