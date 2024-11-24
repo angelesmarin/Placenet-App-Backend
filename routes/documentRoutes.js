@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../middleware/file_uploads');  // File upload middleware
-const { addDocument, getAllDocuments } = require('../controllers/documentController');
+const upload = require('../middleware/file_uploads');  //middleware 
+const { addDocument, getAllDocuments, deleteDocument } = require('../controllers/documentController');
+const authenticateToken = require('../middleware/authMiddleware');
 
-/*
-add new documents
-get documents 
-*/
 
-router.get('/', getAllDocuments); //get
+router.use(authenticateToken);//protect routes 
 
-router.post('/', upload.single('file'), addDocument); //add
+router.get('/', getAllDocuments); 
+router.post('/', upload.single('file'), addDocument);
+router.delete('/:document_id', deleteDocument);//new delete doc route 
 
 module.exports = router;

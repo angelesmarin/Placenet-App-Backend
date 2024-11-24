@@ -1,10 +1,11 @@
 const { where } = require('sequelize');
-const Property = require('../models/Property');
+const { Property } = require('../models');
 
-// get properties
+
+//get all
 const getAllProperties = async (req, res) => {
-  const { user_id } = req.query;
-  try {
+  try{
+    const  user_id = req.user.userId; //extract from jwt payload 
     const properties = await Property.findAll({
       where: { user_id },
     });
@@ -14,12 +15,15 @@ const getAllProperties = async (req, res) => {
   }
 };
 
-// get a property with ID
+//get a property with ID
 const getProperty = async (req, res) => {
   try {
-    const property = await Property.findByPk(req.params.propertyId);
+    const user_id = req.user.userId;
+    const property = await Property.findOne({
+      where: { property_id: req.params.propertyId, user_id },
+    });
     if (!property) {
-      return res.status(404).json({ message: 'Property not found' });
+      return res.status(404).json({ message: 'Property not found or unauthorized' });
     }
     res.status(200).json(property);
   } catch (error) {
@@ -30,7 +34,8 @@ const getProperty = async (req, res) => {
 // new property
 const createProperty = async (req, res) => {
   try {
-    const { user_id, name } = req.body;
+    const user_id = req.user.userId; // Override user_id from JWT payload
+    const { name } = req.body; // Extract property details
     const newProperty = await Property.create({ user_id, name });
     res.status(201).json(newProperty);
   } catch (error) {
@@ -38,28 +43,33 @@ const createProperty = async (req, res) => {
   }
 };
 
-// update property 
+//update 
 const updateProperty = async (req, res) => {
   try {
-    const { user_id, name } = req.body; 
-    const property = await Property.findByPk(req.params.propertyId);
+    const user_id = req.user.userId;
+    const { name } = req.body;
+    const property = await Property.findOne({
+      where: { property_id: req.params.propertyId, user_id },
+    });
     if (!property) {
-      return res.status(404).json({ message: 'Property not found' });
+      return res.status(404).json({ message: 'Property not found or unauthorized' });
     }
-    // Update both `user_id` and `name` if needed
-    await property.update({ user_id, name });
+    await property.update({ name });
     res.status(200).json({ message: 'Property updated successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Error updating property', error });
   }
 };
 
-// Delete property
+//delete
 const deleteProperty = async (req, res) => {
   try {
-    const property = await Property.findByPk(req.params.propertyId);
+    const user_id = req.user.userId;
+    const property = await Property.findOne({
+      where: { property_id: req.params.propertyId, user_id },
+    });
     if (!property) {
-      return res.status(404).json({ message: 'Property not found' });
+      return res.status(404).json({ message: 'Property not found or unauthorized' });
     }
     await property.destroy();
     res.status(200).json({ message: 'Property deleted successfully' });

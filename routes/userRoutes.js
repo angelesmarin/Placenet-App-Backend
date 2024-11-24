@@ -1,27 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const authenticateToken = require('../middleware/authMiddleware');
 const {
   getAllUsers,
   getUser,
-  createUser,
   updateUser,
   deleteUser,
-  authenticateUser
 } = require('../controllers/userController');
 
-/*
-CRUD operations 
-*/
-router.post('/authenticate', authenticateUser);
+router.use(authenticateToken);
 
-router.post('/', createUser); //create 
-
-router.get('/', getAllUsers); //read: all
-
-router.get('/:userId', getUser); //read: 1
-
-router.put('/:userId', updateUser); // update 
-
-router.delete('/:userId', deleteUser); //delete 
+router.get('/', getAllUsers); 
+router.get('/:userId', getUser);
+router.put('/:userId', updateUser); 
+router.delete('/:userId', deleteUser); 
 
 module.exports = router;
