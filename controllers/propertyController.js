@@ -60,11 +60,7 @@ const updateProperty = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-// Delete property
-=======
 //delete
->>>>>>> 9a0f183 (fixed jwt issues)
 const deleteProperty = async (req, res) => {
   try {
     const user_id = req.user.userId;
