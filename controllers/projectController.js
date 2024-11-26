@@ -1,9 +1,10 @@
 const Project = require('../models/Project');
+const Property = require('../models/Property');
 
 //create
 const createProject = async (req, res) => {
   try {
-    const { property_id, name, description, start_date } = req.body;
+    const { property_id, name, description, completion_date } = req.body;
     const user_id = req.user.userId;
     const property = await Property.findOne({
       where: { property_id, user_id },
@@ -12,7 +13,12 @@ const createProject = async (req, res) => {
       return res.status(403).json({message: 'unauthorized to create project'});
     }
     //make new project 
-    const newProject = await Project.create({ property_id, user_id, name, description, start_date });
+    const newProject = await Project.create({ 
+      property_id, 
+      user_id, 
+      name, 
+      description, 
+      completion_date });
     res.status(201).json(newProject);
   } catch (error) {
     res.status(500).json({ message: 'Error making project', error });
@@ -35,7 +41,8 @@ const getProject = async (req, res) => {
    }
    res.status(200).json(project);
  } catch (error) {
-   res.status(500).json({ message: 'Error getting projects', error });
+  console.error('Error:', error),
+   res.status(500).json({ message: 'Error getting projects', error:error.message });
  }
 };
 
@@ -44,19 +51,12 @@ const getAllProjects = async (req, res) => {
   try {
       const user_id = req.user.userId; 
       const { property_id } = req.query; //property filter
-      const queryOptions = {
-          include: {
-              model: Property,
-              where: { user_id }, //property belongs to the logged-in user
-              attributes: ['property_id', 'name'],
-          },
-          where: {},
-      };
-      if (property_id) {
-          queryOptions.where.property_id = property_id;
+      const property = await Property.findOne({ where: { property_id, user_id }});
+      if (!property) {
+        return res.status(403).json({ message: 'Not authorizes to view projects for this property' });
       }
       //get all 
-      const projects = await Project.findAll(queryOptions);
+      const projects = await Project.findAll({where: { property_id }});
       res.status(200).json(projects);
   } catch (error) {
       res.status(500).json({ message: 'Error getting projects', error });
@@ -67,9 +67,20 @@ const getAllProjects = async (req, res) => {
 const updateProject = async (req, res) => {
  try {
   const user_id = req.user.userId;
-   const { property_id, name, description, start_date } = req.body;
-   const project = await Project.findOne({
-    where: { project_id: req.params.projectId },
+  const project_id = req.params.projectId;
+  const { property_id, name, description, completion_date } = req.body;
+
+
+  console.log('project id:', project_id);//debug 
+  console.log('project id:', project_id); //debug
+  
+  //check for missing values 
+  if (!property_id || !name || !description || !completion_date) {
+    return res.status(400).json ({ message: 'missing fields are required'});
+  }
+
+  const project = await Project.findOne({
+    where: { project_id },
     include: {
       model: Property,
       where: { user_id },
@@ -78,9 +89,10 @@ const updateProject = async (req, res) => {
   if (!project) {
     return res.status(404).json({message: 'Project not found or not authorized'});
   }
-   await project.update({ property_id, name, description, start_date });
+   await project.update({ property_id, name, description, completion_date });//update project 
    res.status(200).json(project);
  } catch (error) {
+  console.error('error during project update:', error); //debug error 
    res.status(500).json({ message: 'Error updating project', error });
  }
 };
@@ -90,15 +102,16 @@ const updateProject = async (req, res) => {
 const deleteProject = async (req, res) => {
  try {
   const user_id = req.user.userId;
+  const { project_id } = req.params;
   const project = await Project.findOne({
-    where: { project_id: req.params.projectId },
+    where: { project_id },
     include: {
       model: Property,
       where: { user_id },
     },
   });
    if (!project) {
-     return res.status(404).json({ message: 'Project not found or not authorized' });
+     return res.status(403).json({ message: 'Not authorized to delete project' });
    }
    await project.destroy();
    res.status(200).json({ message: 'Project deleted successfully' });

@@ -12,14 +12,14 @@ origin: ['http://10.222.82.59:8081'], // expo IP and port
 app.use(express.json());
 
 
-// SSL certificate and key (uncomment if needed)
+//for https 
+// SSL certificate and key 
 // const sslOptions = {
 //   key: fs.readFileSync('/Users/angelesmarin/key.pem'),
 //   cert: fs.readFileSync('/Users/angelesmarin/cert.pem')
 // };
 
-
-// Start HTTPS server (uncomment if using SSL)
+// Start HTTPS server 
 // https.createServer(sslOptions, app).listen(PORT, () => {
 //   console.log(`HTTPS Server is running on port: ${PORT}`);
 // });
@@ -29,5 +29,3 @@ app.use(express.json());
 http.createServer(app).listen(PORT, () => {
 console.log(`HTTP Server is running on port: ${PORT}`);
 });
-
-
