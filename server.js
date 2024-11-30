@@ -13,6 +13,7 @@ const projectRoutes = require('./routes/projectRoutes');
 const documentRoutes = require('./routes/documentRoutes');
 const summaryRoutes = require('./routes/summaryRoutes');//new route
 const authRoutes = require('./routes/authRoutes'); //new route 
+const listingRoutes = require('./routes/listingRoute'); //new route
 
 // register routes 
 server.use('/api/users', userRoutes);
@@ -22,6 +23,7 @@ server.use('/api/documents', documentRoutes);
 server.use('/api/users', summaryRoutes);
 server.use('/api/auth', authRoutes);//new route
 server.use('/api/summary', summaryRoutes);//new route 
+server.use('/api/listings', listingRoutes);//new route
 
 //test 
 server.get('/api/test', (req, res) => {
