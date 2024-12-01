@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+
 //use token to access app 
 
 const authenticateToken = (req, res, next) => {
