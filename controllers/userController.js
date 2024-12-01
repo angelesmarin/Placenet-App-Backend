@@ -1,5 +1,6 @@
-const { User } = require('../models');
+const { User } = require('../models/User');
 
+//getall
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll();
@@ -9,6 +10,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+//get1
 const getUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.userId);
@@ -21,7 +23,7 @@ const getUser = async (req, res) => {
   }
 };
 
-// update user 
+//update
 const updateUser = async (req, res) => {
   try {
     const { username, password_hash } = req.body;
@@ -36,7 +38,7 @@ const updateUser = async (req, res) => {
   }
 };
 
-// delete user 
+//delete
 const deleteUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.userId);
