@@ -50,18 +50,21 @@ const getProject = async (req, res) => {
 const getAllProjects = async (req, res) => {
   try {
       const user_id = req.user.userId; 
-      const { property_id } = req.query; //property filter
-      const property = await Property.findOne({ where: { property_id, user_id }});
-      if (!property) {
-        return res.status(403).json({ message: 'Not authorizes to view projects for this property' });
-      }
-      //get all 
-      const projects = await Project.findAll({where: { property_id }});
-      res.status(200).json(projects);
-  } catch (error) {
+
+      //const { property_id } = req.query; //property filter
+      //const property = await Property.findOne({ where: { property_id, user_id }});
+      const projects = await Project.findAll({
+        include: { 
+          model: Property,
+          where: { user_id }, // Ensure only properties owned by the user are included
+        },
+      });
+  
+      res.status(200).json(projects); // Return the projects
+    } catch (error) {
       res.status(500).json({ message: 'Error getting projects', error });
-  }
-};
+    }
+  };
 
 // update project
 const updateProject = async (req, res) => {
