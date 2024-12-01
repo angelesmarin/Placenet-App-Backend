@@ -7,4 +7,3 @@ router.use(authenticateToken);//protect route
 router.get('/', getPropertySummary); 
 
 module.exports = router;
-
