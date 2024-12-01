@@ -1,5 +1,6 @@
 const { Document, Project, Property } = require('../models');
 const s3 = require('../aws/s3');
+const { DeleteObjectCommand } = require('@aws-sdk/client-s3');
 const generatePresignUrl = require('../aws/generatePresignUrl');
 require('dotenv').config();
 
@@ -92,13 +93,15 @@ const deleteDocument = async (req, res) => {
     }
     
     const fileKey = document.file_path.split('amazonaws.com/')[1]; //get s3 key from url
-
-    await s3.deleteObject({
+    const deleteParams = {
       Bucket: process.env.AWS_BUCKET_NAME,
       Key: fileKey,
-    }).promise();
+    };
 
-    //delete from db
+    const command = new DeleteObjectCommand(deleteParams);
+    await s3.send(command); // send() meth
+
+    //delete from  db
     await Document.destroy({ where: { document_id } });
 
     res.status(200).json({ message: 'Document deleted successfully' });
@@ -107,6 +110,7 @@ const deleteDocument = async (req, res) => {
     res.status(500).json({ message: 'Error deleting document', error: error.message });
   }
 };
+
 
 //download doc from s3 
 const downloadDocument = async (req, res) => {
