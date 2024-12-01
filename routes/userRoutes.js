@@ -1,3 +1,4 @@
+// userRoutes.js
 const express = require('express');
 const router = express.Router();
 const authenticateToken = require('../middleware/authMiddleware');
@@ -13,6 +14,6 @@ router.use(authenticateToken);
 router.get('/', getAllUsers); 
 router.get('/:userId', getUser);
 router.put('/:userId', updateUser); 
-router.delete('/:userId', deleteUser); 
+router.delete('/:userId', deleteUser);
 
 module.exports = router;
