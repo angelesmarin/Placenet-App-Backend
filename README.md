@@ -1,8 +1,8 @@
 # Placenet Backend 
-This is the backend for our Placenet react native mobile application so that our [front end](https://github.com/angelesmarin/Placenet-App-Frontend/tree/main) can interact with our backend api routes. We chose to create different repositories for modularity. These are the steps we took to set up the backend for our app:
+This is the backend for our Placenet react native mobile application so that our front end can interact with our backend api routes. We chose to create different repositories for modularity. These are the steps we took to set up the backend for our app:
 
-
-**Here is information about our files!: [files](https://github.com/angelesmarin/Placenet-App-Backend/tree/development/documentation)**
+## Frontend Source Code
+Our frontend source code can be found in our repository: https://github.com/angelesmarin/Placenet-App-Frontend/tree/development 
 
 ## Prerequisite Installs:
 * Javascript

@@ -1,4 +1,4 @@
-## app.js
+## server.js
 This file handles the application configuration:
 * middleware 
 * routes

@@ -1,6 +1,6 @@
-const User = require('../models/User');
+const { User } = require('../models/User');
 
-// get users
+//getall
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.findAll();
@@ -10,7 +10,7 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// get user 
+//get1
 const getUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.userId);
@@ -23,18 +23,7 @@ const getUser = async (req, res) => {
   }
 };
 
-// make new user
-const createUser = async (req, res) => {
-  try {
-    const { username, password_hash } = req.body;
-    const newUser = await User.create({ username, password_hash });
-    res.status(201).json(newUser);
-  } catch (error) {
-    res.status(500).json({ message: 'Error making user', error });
-  }
-};
-
-// update user 
+//update
 const updateUser = async (req, res) => {
   try {
     const { username, password_hash } = req.body;
@@ -49,7 +38,7 @@ const updateUser = async (req, res) => {
   }
 };
 
-// delete user 
+//delete
 const deleteUser = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.userId);
@@ -66,7 +55,6 @@ const deleteUser = async (req, res) => {
 module.exports = {
   getAllUsers,
   getUser,
-  createUser,
   updateUser,
   deleteUser,
 };
