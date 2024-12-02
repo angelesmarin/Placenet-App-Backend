@@ -4,7 +4,7 @@ WORKDIR /usr/src/app/placenet-backend
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install && npm install --save multer-s3
 
 EXPOSE 3000
 
