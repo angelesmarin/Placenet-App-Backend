@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const User = require('../models/User');
+const User = require('../../models/User');
 
 describe('User Model', () => {
   let sequelize;

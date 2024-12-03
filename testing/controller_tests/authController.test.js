@@ -1,15 +1,20 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
-const authController = require('../authController');
+const { User } = require('../../models/User');  
+const authController = require('../../controllers/authController');
 const httpMocks = require('node-mocks-http');
 
-jest.mock('bcrypt');
-jest.mock('jsonwebtoken');
-jest.mock('../models', () => ({
+jest.mock('../../models/User', () => ({
   User: {
     create: jest.fn(),
     findOne: jest.fn(),
+    hasMany: jest.fn(),  
+  },
+}));
+
+jest.mock('../../models/Property', () => ({
+  Property: {
+    findAll: jest.fn(),
   },
 }));
 

@@ -1,11 +1,11 @@
-const { Document, Project, Property } = require('../models');
-const documentController = require('../documentController');
+const { Document, Project, Property } = require('../../models');
+const documentController = require('../../documentController');
 const httpMocks = require('node-mocks-http');
 const path = require('path');
 const fs = require('fs');
 
 // Mock models and file system
-jest.mock('../models', () => ({
+jest.mock('../../models', () => ({
   Document: {
     findAll: jest.fn(),
     findOne: jest.fn(),

@@ -1,5 +1,5 @@
 const multer = require('multer');
-const upload = require('../file_uploads');
+const upload = require('../../file_uploads');
 const httpMocks = require('node-mocks-http');
 const fs = require('fs');
 const path = require('path');

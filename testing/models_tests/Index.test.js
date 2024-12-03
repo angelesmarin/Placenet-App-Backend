@@ -1,5 +1,5 @@
 const { Sequelize } = require('sequelize');
-const { User, Property, Project, Document } = require('../index');
+const { User, Property, Project, Document } = require('../../index');
 
 describe('Model Associations', () => {
   let sequelize;
