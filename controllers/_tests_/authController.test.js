@@ -1,12 +1,12 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User } = require('../models');
+const { User } = require('../../models');
 const authController = require('../authController');
 const httpMocks = require('node-mocks-http');
 
 jest.mock('bcrypt');
 jest.mock('jsonwebtoken');
-jest.mock('../models', () => ({
+jest.mock('../../models', () => ({
   User: {
     create: jest.fn(),
     findOne: jest.fn(),

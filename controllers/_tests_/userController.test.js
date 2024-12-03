@@ -1,8 +1,8 @@
-const { User } = require('../models');
+const { User } = require('../../models');
 const userController = require('../userController');
 const httpMocks = require('node-mocks-http');
 
-jest.mock('../models', () => ({
+jest.mock('../../models', () => ({
   User: {
     findAll: jest.fn(),
     findByPk: jest.fn(),

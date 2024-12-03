@@ -1,8 +1,8 @@
-const { Property, Project } = require('../models');
+const { Property, Project } = require('../../models');
 const projectController = require('../projectController');
 const httpMocks = require('node-mocks-http');
 
-jest.mock('../models', () => ({
+jest.mock('../../models', () => ({
   Property: {
     findOne: jest.fn(),
   },

@@ -1,11 +1,11 @@
-const { Document, Project, Property } = require('../models');
+const { Document, Project, Property, User } = require('../../models'); // Updated to match the central exports
 const documentController = require('../documentController');
 const httpMocks = require('node-mocks-http');
 const path = require('path');
 const fs = require('fs');
 
 // Mock models and file system
-jest.mock('../models', () => ({
+jest.mock('../../models', () => ({
   Document: {
     findAll: jest.fn(),
     findOne: jest.fn(),
@@ -15,7 +15,12 @@ jest.mock('../models', () => ({
   Project: {
     findOne: jest.fn(),
   },
-  Property: {},
+  Property: {
+    findOne: jest.fn(),
+  },
+  User: {
+    findOne: jest.fn(),
+  },
 }));
 
 jest.mock('fs', () => ({
@@ -53,7 +58,7 @@ describe('Document Controller', () => {
         where: { project_id: 1 },
         include: {
           model: Property,
-          where: { user_id: 1 },
+          where: { user_id: 1 }, // User ID is used as part of the Property association
         },
       });
       expect(Document.create).toHaveBeenCalledWith({
@@ -74,7 +79,10 @@ describe('Document Controller', () => {
       await documentController.addDocument(req, res);
 
       expect(res.statusCode).toBe(400);
-      expect(JSON.parse(res._getData())).toHaveProperty('message', 'Missing or incorrect file type. Please upload a PDF!');
+      expect(JSON.parse(res._getData())).toHaveProperty(
+        'message',
+        'Missing or incorrect file type. Please upload a PDF!'
+      );
     });
 
     it('should return 403 if the user is not authorized to upload documents to the project', async () => {
@@ -90,7 +98,10 @@ describe('Document Controller', () => {
       await documentController.addDocument(req, res);
 
       expect(res.statusCode).toBe(403);
-      expect(JSON.parse(res._getData())).toHaveProperty('message', 'not authorized to upload documents to project');
+      expect(JSON.parse(res._getData())).toHaveProperty(
+        'message',
+        'not authorized to upload documents to project'
+      );
     });
 
     it('should handle errors when uploading a document', async () => {
