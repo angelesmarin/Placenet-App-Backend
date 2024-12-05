@@ -19,11 +19,12 @@ const Project = sequelize.define('Project', {
   },
   user_id: {
     type: DataTypes.INTEGER,
-    allowNull: true,
+    allowNull: false,
     references: {
       model: User,
       key: 'user_id',
     },
+    onDelete: 'CASCADE',
   },
   name: {
     type: DataTypes.STRING(255),
