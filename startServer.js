@@ -18,7 +18,7 @@ app.use(express.json());
 //   cert: fs.readFileSync('/Users/angelesmarin/cert.pem')
 // };
 
-// Start HTTPS server 
+// Start HTTPS server (uncomment if using SSL)
 // https.createServer(sslOptions, app).listen(PORT, () => {
 //   console.log(`HTTPS Server is running on port: ${PORT}`);
 // });
